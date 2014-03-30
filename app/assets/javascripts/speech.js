@@ -82,6 +82,35 @@ function updateCountry() {
   select_dialect.style.visibility = list[1].length == 1 ? 'hidden' : 'visible';
 }
 
+function trim1 (str) {
+    return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+}
+
+function parseParagraph() {
+  output = '';
+  sentences = $('#final_span li');
+  for (var i = 0; i < sentences.length; i++)
+  {
+    sentence = $(sentences[i]);
+    if (sentence.attr('class') == "floatleft")
+      output += "- " + trim1(sentence.text()) + "\n";
+    else {
+      output += "      - " + trim1(sentence.text()) + "\n";
+    }
+  }
+  sentences = $('#final_temp li');
+  for (var i = 0; i < sentences.length; i++)
+  {
+    sentence = $(sentences[i]);
+    if (sentence.attr('class') == "floatleft")
+      output += "- " + trim1(sentence.text()) + "\n";
+    else {
+      output += "      - " + trim1(sentence.text()) + "\n";
+    }
+  }
+  return output;
+}
+
 var create_email = false;
 var final_transcript = '';
 var counter = 0;
@@ -286,7 +315,7 @@ function exportButton(event) {
     });
   }
   else {
-    filepicker.store($('#final_span').text(),
+    filepicker.store(parseParagraph(),
         {filename:'lecture_notes', location: 'S3'},
         function(stored_file){
             filepicker.export(stored_file, {service:'DROPBOX'}, function(InkBlob) {
