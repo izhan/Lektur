@@ -132,17 +132,17 @@ if (!('webkitSpeechRecognition' in window)) {
   recognition.onstart = function() {
     recognizing = true;
     showInfo('info_speak_now');
-    start_img.src = '//google.com/intl/en/chrome/assets/common/images/content/mic-animate.gif';
+    start_img.src = 'https://www.google.com/intl/en/chrome/assets/common/images/content/mic-animate.gif';
   };
 
   recognition.onerror = function(event) {
     if (event.error == 'no-speech') {
-      start_img.src = '//google.com/intl/en/chrome/assets/common/images/content/mic.gif';
+      start_img.src = 'https://www.google.com/intl/en/chrome/assets/common/images/content/mic.gif';
       showInfo('info_no_speech');
       ignore_onend = true;
     }
     if (event.error == 'audio-capture') {
-      start_img.src = '//google.com/intl/en/chrome/assets/common/images/content/mic.gif';
+      start_img.src = 'https://www.google.com/intl/en/chrome/assets/common/images/content/mic.gif';
       showInfo('info_no_microphone');
       ignore_onend = true;
     }
@@ -161,7 +161,7 @@ if (!('webkitSpeechRecognition' in window)) {
     if (ignore_onend) {
       return;
     }
-    start_img.src = '//google.com/intl/en/chrome/assets/common/images/content/mic.gif';
+    start_img.src = 'https://www.google.com/intl/en/chrome/assets/common/images/content/mic.gif';
     if (!final_transcript) {
       showInfo('info_start');
       return;
@@ -280,7 +280,6 @@ function copyButton() {
     recognizing = false;
     recognition.stop();
   }
-  copy_button.style.display = 'none';
   copy_info.style.display = 'inline-block';
   showInfo('');
 }
@@ -363,7 +362,6 @@ function showButtons(style) {
     return;
   }
   current_style = style;
-  copy_button.style.display = style;
   email_button.style.display = style;
   copy_info.style.display = 'none';
   email_info.style.display = 'none';
