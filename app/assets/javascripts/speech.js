@@ -86,6 +86,7 @@ var create_email = false;
 var final_transcript = '';
 var counter = 0;
 var all_text = '';
+var four_sentences = '';
 var recognizing = false;
 var fileselected = false;
 var ignore_onend;
@@ -175,6 +176,7 @@ if (!('webkitSpeechRecognition' in window)) {
     if (final_transcript)
     {
       counter++;
+      four_sentences += final_transcript;
       all_text += final_transcript;
       if ((counter%4) == 0)
       {
@@ -195,13 +197,14 @@ if (!('webkitSpeechRecognition' in window)) {
                   writefile(all_text);
               }
             }
+            four_sentences = '';
             temp = $('#final_temp');
             final_span.innerHTML += temp[0].innerHTML;
             if (inkblob)
               writefile(all_text);
             temp[0].innerHTML = "";
           },
-          data: { outputMode: "json", text: all_text, apikey: "12c03efad5071dc17762332480c35cf703a3315b" }
+          data: { outputMode: "json", text: four_sentences, apikey: "12c03efad5071dc17762332480c35cf703a3315b" }
         });
       }
       final_temp.innerHTML += "<li style='color:" + color + ";' class='bullet-point'>" + linebreak(final_transcript) + "</li>";
