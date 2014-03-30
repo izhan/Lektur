@@ -190,7 +190,7 @@ if (!('webkitSpeechRecognition' in window)) {
             if (data.concepts.length > 0) {
               if (data.concepts[0].relevance > 0.75)
               {
-                final_span.innerHTML += "<li style='color:#AEEEEE;'>" + data.concepts[0].text + "</li>";
+                final_span.innerHTML += "<li class='floatleft' style='color:blue;'>" + data.concepts[0].text + "</li>";
                 if (inkblob)
                   writefile(all_text);
               }

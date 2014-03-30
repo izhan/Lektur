@@ -1,3 +1,12 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.final li {
+  margin-left: 35px;
+  padding: 3px 0;
+}
+
+.final li.floatleft {
+  margin-left: 0;
+}
