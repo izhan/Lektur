@@ -69,6 +69,9 @@ GEM
     faker (1.1.2)
       i18n (~> 0.5)
     ffi (1.9.3)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     formatador (0.2.4)
     fssm (0.2.10)
     growl (1.0.3)
@@ -219,6 +222,7 @@ DEPENDENCIES
   compass-rails
   factory_girl_rails (= 4.2.1)
   faker (= 1.1.2)
+  figaro
   growl
   guard-rspec (= 2.5.0)
   guard-spork (= 1.5.0)
